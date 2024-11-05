@@ -1,5 +1,6 @@
 package io.github.Sam11238902.produtosapi.controller;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.Sam11238902.produtosapi.model.Produto;
@@ -65,6 +67,19 @@ public class ProdutoController {
 		produtoRepository.save(produto);
 		
 	}
+	
+	
+	 @GetMapping
+	    public List<Produto> buscarPorNome(@RequestParam("nome") String nome) {
+	      
+		 System.out.println("Nome passado " + nome);
+		
+		 
+		 return produtoRepository.findByNome(nome);
+	    }
+	
+	
+	
 
 	
 	
